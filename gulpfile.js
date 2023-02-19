@@ -2,9 +2,10 @@ var gulp = require("gulp"),
   sourcemapps = require("gulp-sourcemaps"),
   prefixer = require("gulp-autoprefixer"),
   concat = require("gulp-concat"),
-  pug = require("gulp-pug");
-  sass = require('gulp-sass')(require('sass'));
-   livereload = require("gulp-livereload");
+  pug = require("gulp-pug"),
+  sass = require('gulp-sass')(require('sass')),
+   livereload = require("gulp-livereload"),
+   server = require("./server");
  var fileName;
 gulp.task("css", function () {
   return (
@@ -31,11 +32,17 @@ gulp.task("html",function(){
   .pipe(livereload())
 });
 
-gulp.task('dev',function(){
+// gulp.task('dev',function(){
+//   gulp.watch('./project/pages/*.pug', gulp.series('html'));
+//   gulp.watch('./project/css/*.scss',gulp.series('css'));
+// })
+
+const watchFiles= function(){
+  server();
   gulp.watch('./project/pages/*.pug', gulp.series('html'));
   gulp.watch('./project/css/*.scss',gulp.series('css'));
-})
-
+}
+gulp.task("watch",gulp.parallel(watchFiles));
 // .pipe(sourcemapps.init())
 // .pipe(concat("about.html"))
 // .pipe(sourcemapps.write())
