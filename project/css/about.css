@@ -35,7 +35,7 @@
   background-color: #fff;
   border-radius: 20px;
   width: 400px;
-  box-shadow: 0 0 10px rgb(220, 226, 233), 0 0 10px rgb(220, 226, 234);
+  box-shadow: 0 0 10px rgb(220, 226, 233), 0 0 10px rgb(220, 226, 233);
 }
 .container .about .data p {
   padding: 20px;

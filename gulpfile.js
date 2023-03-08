@@ -7,6 +7,8 @@ var gulp = require("gulp"),
    livereload = require("gulp-livereload"),
    server = require("./server");
  var fileName;
+
+ server();
 gulp.task("css", function () {
   return (
     gulp
@@ -38,7 +40,6 @@ gulp.task("html",function(){
 // })
 
 const watchFiles= function(){
-  server();
   gulp.watch('./project/pages/*.pug', gulp.series('html'));
   gulp.watch('./project/css/*.scss',gulp.series('css'));
 }
